@@ -65,7 +65,13 @@ const Navbar = () => {
                         {menuOptions.map((item) => (
                             <ListItem key={item.text} disableGutters>
                                 <ListItemButton >
-                                    <Link to={item.href} spy={true} smooth={true} onClick={() => setOpenMenu(false)}>
+                                    <Link
+                                        to={item.href}
+                                        spy={true}
+                                        smooth={true}
+                                        onClick={() => setOpenMenu(false)}
+                                        style={{display: 'flex'}}
+                                    >
                                         <ListItemIcon>{item.icon}</ListItemIcon>
                                         <ListItemText primary={item.text}/>
                                     </Link>
