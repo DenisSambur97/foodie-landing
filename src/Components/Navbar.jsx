@@ -5,6 +5,7 @@ import {HiOutlineBars3} from "react-icons/hi2";
 import {Box, Drawer, ListItem, ListItemIcon, ListItemText, List} from "@material-ui/core";
 import {Home, Info, CommentRounded, PhoneRounded, ShoppingCartRounded} from "@material-ui/icons";
 import {ListItemButton} from "@mui/material";
+import {Link} from "react-scroll"
 
 const Navbar = () => {
     const [openMenu, setOpenMenu] = useState(false);
@@ -17,22 +18,22 @@ const Navbar = () => {
         {
             text: 'About',
             icon: <Info/>,
-            href: '/about'
+            href: 'about'
         },
         {
             text: 'Testimonials',
             icon: <CommentRounded/>,
-            href: '/testimonials'
+            href: 'testimonials'
         },
         {
             text: 'Contact',
             icon: <PhoneRounded/>,
-            href: '/contact'
+            href: 'contact'
         },
         {
             text: 'Work',
             icon: <ShoppingCartRounded/>,
-            href: '/work'
+            href: 'work'
         }
     ]
 
@@ -43,7 +44,7 @@ const Navbar = () => {
             </div>
             <div className={'navbar-links-container'}>
                 {menuOptions && menuOptions.map((item, i) => (
-                    <a key={i} href={item.href}>{item.text}</a>
+                    <Link to={item.href} key={i} href={item.href} spy={true} smooth={true}>{item.text}</Link>
                 ))}
                 <a href="#">
                     <BsCart2 className={'navbar-cart-icon'} size={35}/>
@@ -63,9 +64,11 @@ const Navbar = () => {
                     <List>
                         {menuOptions.map((item) => (
                             <ListItem key={item.text} disableGutters>
-                                <ListItemButton>
-                                    <ListItemIcon>{item.icon}</ListItemIcon>
-                                    <ListItemText primary={item.text}/>
+                                <ListItemButton >
+                                    <Link to={item.href} spy={true} smooth={true} onClick={() => setOpenMenu(false)}>
+                                        <ListItemIcon>{item.icon}</ListItemIcon>
+                                        <ListItemText primary={item.text}/>
+                                    </Link>
                                 </ListItemButton>
                             </ListItem>
                         ))}
